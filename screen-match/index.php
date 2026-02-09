@@ -1,10 +1,8 @@
 <?php
 
-require __DIR__ . "/funcoes.php";
+require __DIR__ . "/src/funcoes.php";
 
-$nomeFilme = "Thor: Ragnarok";
 $nomeFilme = "Top Gun - Maverick";
-$nomeFilme = "Se beber, não case";
 $anoLancamento = 2022;
 
 $quantidadeDeNotas = $argc - 1;
@@ -35,14 +33,12 @@ $genero = match ($nomeFilme) {
 
 echo "O gênero do filme é: $genero\n";
 
-$filme = [
-    'nome' => "Thor: Ragnarok",
-    'ano' => 2022,
-    'nota' => 6.73,
-    'genero' => "Comédia",
-];
+$filme = criaFilme (nome: "Thor: Ragnarok",
+                    anoLancamento: 2022,
+                    notaAvaliacao: 5.9,
+                    genero: "Super-herói");
 
-echo $filme['nome'];
+echo $filme['ano'] . "\n";
 
 var_dump($notas);
 sort($notas);
@@ -54,3 +50,6 @@ $posicaoDoisPontos = (strpos($filme['nome'], ':'));
 var_dump($posicaoDoisPontos);
 
 var_dump(substr($filme['nome'], 0, $posicaoDoisPontos));
+
+$filmeComoStringJson = json_encode($filme);
+file_put_contents(__DIR__ . '/filme.json', $filmeComoStringJson);
