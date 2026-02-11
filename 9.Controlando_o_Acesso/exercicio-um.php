@@ -5,7 +5,7 @@ class Conta
     private int $saldoEmCentavos;
     private string $nomeTitular;
     private string $numeroConta;
-
+    
     public function depositar(int $valorADepositar): void
     {
         if ($valorADepositar > 0) {
