@@ -1,28 +1,15 @@
 <?php
 
-class Titulo {
-    private array $notas;
+namespace ScreenMatch\Modelo;
 
-    public function __construct(
-        public readonly string $nome,
-        public readonly int $anoLancamento,
-        public readonly Genero $genero
-    ) {
-        $this->notas = [];
-    }
+abstract class Titulo implements Avaliavel{
+    
+    use ComAvaliacao;
 
-    public function avalia(float $nota): void {
-        $this->notas[] = $nota;
-    }
+    public function __construct(public readonly string $nome,
+                                public readonly int $anoLancamento,
+                                public readonly Genero $genero
+    ) {}
 
-    public function media(): float {
-        $somaNotas = array_sum($this->notas);
-        $quantidadeNotas = count($this->notas);
-
-        return $somaNotas / $quantidadeNotas;
-    }
-
-    public function duracaoEmMinutos(): int {
-        return 0;
-    }
+    abstract public function duracaoEmMinutos(): int; 
 }
