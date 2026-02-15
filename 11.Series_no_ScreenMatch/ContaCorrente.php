@@ -9,7 +9,7 @@ class ContaCorrente extends ContaBancaria {
         $this->saldo -= self::TARIFA_MENSAL;
     }
 
-    #[Override]
+    #[\Override]
     public function sacar(int $valorASacar): void {
         $saqueTotal = $valorASacar + $valorASacar * self::TAXA_SAQUE;
 
